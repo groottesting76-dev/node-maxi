@@ -58,7 +58,7 @@ app.use((error: AppError, req: Request, res: Response, next: NextFunction) => {
 // });
 
 mongooseConnect().then(() => {
-    const server = https.createServer({ key: privateKey, cert: certificate, }, app).listen(3000);
+    const server = https.createServer({ key: privateKey, cert: certificate, }, app).listen(process.env.PORT || 3000);
     const socketIo = new Server(server);
     socketIo.on('connection', socket => {
 
